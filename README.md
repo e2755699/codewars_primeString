@@ -1,0 +1,2 @@
+# primeString
+codewars kata
