@@ -48,8 +48,8 @@ namespace codewars_primeString
         [TestMethod]
         public void Input_abaa_shoudBeReturnIsTure()
         {
-            var input = "abaa";
-            var expected = true;
+            var input = "abab";
+            var expected = false;
 
             AccumShouldBe(expected, input);
         }
@@ -62,5 +62,33 @@ namespace codewars_primeString
 
             AccumShouldBe(expected, input);
         }
+
+        [TestMethod]
+        public void Input_fdsyffdsyffdsyffdsyffdsyf_shouldBeReturnIsFasle()
+        {
+            var input = "fdsyffdsyffdsyffdsyffdsyf";
+            var expected = false;
+
+            AccumShouldBe(expected, input);
+        }
+
+        [TestMethod]
+        public void Input_utdutdtdutd_shouldBeReturnIsFasle()
+        {
+            var input = "utdutdtdutd";
+            var expected = true;
+
+            AccumShouldBe(expected, input);
+        }
+
+        [TestMethod]
+        public void Input_abba_shouldBeReturnIsFasle()
+        {
+            var input = "abba";
+            var expected = true;
+
+            AccumShouldBe(expected, input);
+        }
+
     }
 }
