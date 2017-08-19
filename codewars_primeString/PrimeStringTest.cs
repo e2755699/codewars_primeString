@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace codewars_primeString
 {
     [TestClass]
-    public class UnitTest1
+    public class PrimeStringTest
     {
         [TestMethod]
         public void InputIsEmpty_ShouldBeReturnIsFalse()

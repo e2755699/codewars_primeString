@@ -9,21 +9,18 @@ namespace codewars_primeString
     {
         internal bool Accum(string input)
         {
-            if (string.IsNullOrEmpty(input))
-            {
-                return false;
-            }
-
+            if (string.IsNullOrEmpty(input)) return false;
+                
             var checkString = string.Empty;
 
             for (var i = 0; i <= input.Length/2; i++)
             {
 
-                checkString = string.Concat(checkString, input[i]);
+                checkString += input[i];
 
                 if (input.Length % (i+1) == 0 && input.Length > 1)
                 {
-                    if (!RecursieCheckPrimeString(input.Substring(checkString.Length), checkString))
+                    if (!RecursieCheckPrimeString(input, checkString))
                     {
                         return false;
                     }                    
@@ -33,43 +30,21 @@ namespace codewars_primeString
 
         }
 
-        private bool RecursieCheckPrimeString(string subInput, string checkString)
+        private bool RecursieCheckPrimeString(string input, string checkString)
         {
-           
+            var subInput = input.Substring(checkString.Length);
+
             if (subInput.Length > checkString.Length)
             {
                 if (subInput.Substring(0, checkString.Length).Equals(checkString))
                 {
-                    if (RecursieCheckPrimeString(subInput.Substring(checkString.Length), checkString))
-                    {
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }
+                    return RecursieCheckPrimeString(subInput, checkString);
                 }
-                else
-                {
-                    return true;
-                }
-            }
-            else if (subInput.Length == checkString.Length)
-            {
-                if (subInput.Equals(checkString))
-                {
-                    return false;    
-                }
-                else
-                {
-                    return true;
-                }
-            }
-            else
-            {
-                return true;
             }
 
+            if (subInput.Equals(checkString)) return false;
+
+            return true;
         }
     }
 }
