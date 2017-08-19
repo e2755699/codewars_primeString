@@ -16,15 +16,13 @@ namespace codewars_primeString
 
         private bool CheckStringPrime(string input)
         {
-            var checkString = string.Empty;
 
-            for (var i = 0; i <= input.Length / 2; i++)
+            for (var i = 1; i <= input.Length / 2; i++)
             {
-                checkString += input[i];
 
-                if (input.Length % (i + 1) == 0 && input.Length > 1)
+                if (input.Length % i == 0)
                 {
-                    if (!RecursieCheckPrimeString(input, checkString))
+                    if (RecursieCheckPrimeString(input, i))
                     {
                         return false;
                     }
@@ -33,21 +31,23 @@ namespace codewars_primeString
             return true;
         }
 
-        private bool RecursieCheckPrimeString(string input, string checkString)
+        private bool RecursieCheckPrimeString(string input, int length)
         {
-            var subInput = input.Substring(checkString.Length);
+            return (input.Replace(input.Substring(0, length), "").TrimEnd() == "");
 
-            if (subInput.Length > checkString.Length)
-            {
-                if (subInput.Substring(0, checkString.Length).Equals(checkString))
-                {
-                    return RecursieCheckPrimeString(subInput, checkString);
-                }
-            }
+            //var subInput = input.Substring(checkString.Length);
 
-            if (subInput.Equals(checkString)) return false;
+            //if (subInput.Length > checkString.Length)
+            //{
+            //    if (subInput.Substring(0, checkString.Length).Equals(checkString))
+            //    {
+            //        return RecursieCheckPrimeString(subInput, checkString);
+            //    }
+            //}
 
-            return true;
+            //if (subInput.Equals(checkString)) return false;
+
+            //return true;
         }
     }
 }
